@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.citasapi.models.MedicoModelo;
+import com.example.citasapi.repository.MedicoRepository;
+import com.example.citasapi.repository.PersonaRepository;
+
 @Service
 public class MedicoService {
     @Autowired
@@ -22,8 +26,8 @@ public class MedicoService {
     }
 
     public boolean eliminarMedico(Long id){
-        if(repositorio.existById(id)){
-            repositorio.deleteById(id)
+        if(repositorio.existsById(id)){
+            repositorio.deleteById(id);
             return true;
         }
         else{

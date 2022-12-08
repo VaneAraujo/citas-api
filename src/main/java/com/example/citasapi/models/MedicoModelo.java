@@ -1,14 +1,33 @@
 package com.example.citasapi.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name="medico")
 public class MedicoModelo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true,nullable = false)
     private int medico_id;
     private String licencia;
     private String especialidad;
     private String tarjeta_prof;
     private String inicio_horario_laboral;
     private String fin_horario_laboral;
+    @Column(name="cedula_id", insertable=false, updatable=false)
     private Long cedulaId;
+
+    @ManyToOne
+    @JoinColumn(name= "cedula_id")
     private PersonaModelo persona;
 
     public MedicoModelo() {
@@ -26,7 +45,8 @@ public class MedicoModelo {
         this.inicio_horario_laboral = inicio_horario_laboral;
         this.fin_horario_laboral = fin_horario_laboral;
     }
-    
+
+
     public int getMedico_id() {
         return medico_id;
     }
@@ -63,7 +83,6 @@ public class MedicoModelo {
     public void setFin_horario_laboral(String fin_horario_laboral) {
         this.fin_horario_laboral = fin_horario_laboral;
     }
-
     public PersonaModelo getPersona () {
         return persona ;
     }
