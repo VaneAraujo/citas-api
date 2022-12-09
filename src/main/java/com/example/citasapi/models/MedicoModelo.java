@@ -17,7 +17,7 @@ public class MedicoModelo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true,nullable = false)
-    private int medico_id;
+    private Long medico_id;
     private String licencia;
     private String especialidad;
     private String tarjeta_prof;
@@ -33,9 +33,8 @@ public class MedicoModelo {
     public MedicoModelo() {
         super();
     }
-
     
-    public MedicoModelo(int medico_id, String licencia, String especialidad, String tarjeta_prof,
+    public MedicoModelo(Long medico_id, String licencia, String especialidad, String tarjeta_prof,
             String inicio_horario_laboral, String fin_horario_laboral) {
         super();
         this.medico_id = medico_id;
@@ -47,10 +46,10 @@ public class MedicoModelo {
     }
 
 
-    public int getMedico_id() {
+    public Long getMedico_id() {
         return medico_id;
     }
-    public void setMedico_id(int medico_id) {
+    public void setMedico_id(Long medico_id) {
         this.medico_id = medico_id;
     }
     public String getLicencia() {
